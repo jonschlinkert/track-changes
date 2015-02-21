@@ -1,0 +1,47 @@
+{
+  "name": "track-changes",
+  "description": ".",
+  "version": "0.1.0",
+  "homepage": "https://github.com/jonschlinkert/track-changes",
+  "author": {
+    "name": "Jon Schlinkert",
+    "url": "https://github.com/jonschlinkert"
+  },
+  "repository": "jonschlinkert/track-changes",
+  "bugs": {
+    "url": "https://github.com/jonschlinkert/track-changes/issues"
+  },
+  "license": "MIT",
+  "files": [
+    "index.js"
+  ],
+  "main": "index.js",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "should": "^4.0.4"
+  },
+  "keywords": [
+    "config",
+    "configuration",
+    "define",
+    "disable",
+    "default",
+    "defaults",
+    "disabled",
+    "enable",
+    "enabled",
+    "get",
+    "opt",
+    "option",
+    "options",
+    "opts",
+    "set",
+    "history"
+  ]
+}
