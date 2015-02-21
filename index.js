@@ -1,5 +1,7 @@
 'use strict';
 
+var clone = require('clone-deep');
+
 /**
  * Expose `Changes`
  */
@@ -10,7 +12,7 @@ module.exports = Changes;
  * Create a new instance of `Changes`.
  *
  * ```js
- * var changes = new Changes();
+ * var app = new Changes();
  * ```
  * @api public
  */
@@ -23,7 +25,17 @@ function Changes() {
  * Track the `value` of `key` with a `comment`.
  *
  * ```js
- * changes.track('ext', 'before merge', value);
+ * var foo = 'foo';
+ * app.track('foo', 'one', foo);
+ *
+ * foo = 'bar';
+ * app.track('foo', 'two', foo);
+ *
+ * foo = 'baz';
+ * app.track('foo', 'three', foo);
+ *
+ * // get history of tracked changes for `foo`
+ * app.getHistory('foo');
  * ```
  *
  * @param  {String} `key`
@@ -34,16 +46,35 @@ function Changes() {
  */
 
 Changes.prototype.track = function(key, comment, value) {
+  var val = clone(value);
+
   this.history[key] = this.history[key] || {};
   if (!this.history[key].first) {
-    this.history[key].first = value;
+    this.history[key].first = val;
   }
   if (comment) {
-    this.history[key].last = value;
-    this.history[key][comment] = value;
+    this.history[key].last = val;
+    this.history[key][comment] = val;
     return this;
   }
+
   return function (n, v) {
-    return this.track(key, n, v);
+    return this.track(key, n, clone(v));
   }.bind(this);
+};
+
+
+/**
+ * Get the history for a tracked `key`.
+ *
+ * ```js
+ * var ext = app.getHistory('ext');
+ * ```
+ *
+ * @param  {String} `key`
+ * @return {Object}
+ */
+
+Changes.prototype.getHistory = function(key) {
+  return this.history[key];
 };
