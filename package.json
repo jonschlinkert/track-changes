@@ -1,6 +1,6 @@
 {
   "name": "track-changes",
-  "description": ".",
+  "description": "Very simple API for tracking changes to the property of an object for use in debugging.",
   "version": "0.1.0",
   "homepage": "https://github.com/jonschlinkert/track-changes",
   "author": {
@@ -21,6 +21,9 @@
   },
   "scripts": {
     "test": "mocha"
+  },
+  "dependencies": {
+    "clone-deep": "^0.1.1"
   },
   "devDependencies": {
     "mocha": "*",
