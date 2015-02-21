@@ -49,9 +49,10 @@ Changes.prototype.track = function(key, comment, value) {
   var val = clone(value);
 
   this.history[key] = this.history[key] || {};
-  if (!this.history[key].first) {
+  if (typeof this.history[key].first === 'undefined') {
     this.history[key].first = val;
   }
+
   if (comment) {
     this.history[key].last = val;
     this.history[key][comment] = val;
