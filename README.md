@@ -8,7 +8,16 @@
 npm i track-changes --save
 ```
 
+## Usage
+
+```js
+var app = new Changes();
+app.track(key, 'brief comment about value', value);
+```
+
 ## Examples
+
+_(also see [examples.js](./examples.js))_
 
 This is a basic example showing how you might track changes to a value in your application.
 
